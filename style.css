@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-flow: column;
+}
+
+.site-container {
+  background: #000000;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame {
+  background: #e10d10;
+  width: 95vmin;
+  height: 95vmin;
+  border: #f1374c outset 4px;
+  border-radius: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.frame-top {
+  flex: 1;
+  align-items: center;
+  gap: 3vmin;
+}
+
+.frame-top > h1 {
+  color: #d3a773;
+  font-family: 'Style Script', cursive;
+  font-size: 7vmin;
+  text-shadow: 1px 1px #ffc98a;
+}
+
+.frame-top > span {
+  color: #d3a773;
+  font-size: 2.5vmin;
+  font-style: italic;
+  font-weight: 800;
+  text-shadow: 1px 1px #ffc98a;
+}
+
+.frame-middle {
+  height: 75%;
+  width: 75%;
+  background: #808791;
+  border: #f1374c inset 4px;
+  border-radius: 8px;
+}
+
+.screen-container {
+  height: 100%;
+  width: 100%;
+}
+
+.screen-container.flex {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.grid {
+  border: white solid 1px;
+  height: 33%;
+  width: 33%;
+}
+
+.frame-bottom {
+  flex: 1;
+  align-self: stretch;
+  justify-content: space-between;
+}
+
+.dial {
+  background: #d6d5df;
+  height: 11vmin;
+  width: 11vmin;
+  align-self: flex-end;
+  border: #fbfcfc outset 8px;
+  border-radius: 11vmin;
+}
