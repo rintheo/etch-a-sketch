@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch a Sketch</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,14 +15,15 @@
       <div class="frame flex column">
         <div class="frame-top flex">
           <div class="frame-top-left">
-            <button id="dimChange" class="button">px</button>
+            <button id="dimChangeButton" class="button">px</button>
           </div>          
           <div class="title flex">
             <span>MAGIC</span>
             <h1>Etch A Sketch</h1>
             <span>SCREEN</span>
           </div>
-          <div class="frame-top-right"></div>
+          <div class="frame-top-right">
+          </div>
         </div>
         <div class="frame-middle flex">
           <div id="screenContainer" class="screen-container flex">
@@ -31,6 +32,13 @@
         </div>
         <div class="frame-bottom flex">
           <div class="dial"></div>
+          <div class="frame-bottom-middle flex column">
+            <div>
+              <button data-mode="default" id="defaultButton" class="button toggled">default</button>
+              <button data-mode="rgb" id="rgbButton" class="button">rgb</button>
+              <button data-mode="progressive" id="progressiveButton" class="button">progressive</button>
+            </div>
+          </div>
           <div class="dial"></div>
         </div>
       </div>

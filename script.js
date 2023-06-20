@@ -1,6 +1,11 @@
-let dim = 16;
-const dimChange = document.querySelector('#dimChange');
 const screen = document.querySelector('#screenContainer')
+const dimChangeButton = document.querySelector('#dimChangeButton');
+const defaultButton = document.querySelector('#defaultButton');
+const rgbButton = document.querySelector('#rgbButton');
+const progressiveButton = document.querySelector('#progressiveButton');
+let dim = 16;
+let mode = 'default';
+let isProgressive = false;
 
 function createGrid(dim) {
     const pixelTotal = dim * dim;
@@ -32,7 +37,27 @@ function pixelListener(pixel) {
 }
 
 function etch(e) {
-    this.classList.add('etched');
+    if (isProgressive) {
+        if (this.style.filter === '') {
+            this.style.filter = 'brightness(100%)'; 
+        }
+        else if (this.style.filter !== 'brightness(0%)') {
+            let currentBrightness = this.style.filter.substring(this.style.filter.indexOf('(') + 1,this.style.filter.indexOf('%'));
+            this.style.filter = `brightness(${currentBrightness - 10}%)`; 
+        }
+    }
+    switch(mode) {
+        case 'default':
+            this.style.backgroundColor = `#646464`;
+            break;
+        case 'rgb':
+            this.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+            break;
+    }    
+}
+
+function randomColor() {
+    return ~~(Math.random()*255);
 }
 
 function changeDimension(e){
@@ -54,6 +79,29 @@ function changeDimension(e){
     }
 }
 
-dimChange.addEventListener('click', changeDimension);
-createGrid(dim);
+function changeMode(e) {
+    const previous = document.querySelector(`#${mode}Button`);
+    previous.addEventListener('click', changeMode);
+    previous.classList.remove('toggled');
+    clearGrid(screen);
+    createGrid(dim);
+    mode = this.getAttribute('data-mode');
+    this.classList.add('toggled');
+    this.removeEventListener('click', changeMode)
+}
 
+function toggleProgressive() {
+    if (isProgressive) {
+        isProgressive = false;
+        this.classList.remove('toggled');
+    }
+    else {
+        isProgressive = true;
+        this.classList.add('toggled');
+    }
+}
+
+dimChangeButton.addEventListener('click', changeDimension);
+rgbButton.addEventListener('click', changeMode);
+progressiveButton.addEventListener('click', toggleProgressive);
+createGrid(dim);

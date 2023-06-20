@@ -54,10 +54,14 @@ h1, h2, h3, h4, h5, h6 {
   border: #f1374c outset 0.5vmin;
   border-radius: 2vmin;
   height: 6vmin;
-  width: 6vmin;
-  margin: 2vmin;
+
   font-size: 2vmin;
   font-weight: 600;
+}
+
+.button#dimChangeButton {
+  margin: 2vmin;
+  width: 6vmin;
 }
 
 .button:hover {
@@ -66,6 +70,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .button:active {
   transform: scale(0.95);
+  border: #f1374c inset 0.5vmin;
+}
+
+.button.toggled {
   border: #f1374c inset 0.5vmin;
 }
 
@@ -110,22 +118,29 @@ h1, h2, h3, h4, h5, h6 {
   align-content: center;
 }
 
-.pixel {
-  /* border: #6e747e solid 0.05vmin; */
-  /* 
+/* .pixel {
+  border: #6e747e solid 0.05vmin;
   height: applied through JavaScript
   width: applied through JavaScript
-  */
-}
+} */
 
-.etched {
+/* .etched {
   background: #646464;
-}
+} */
 
 .frame-bottom {
   flex: 1;
   align-self: stretch;
   justify-content: space-between;
+}
+
+.frame-bottom-middle {
+  justify-content: center;
+  align-items: center;
+}
+
+#progressiveButton {
+  margin-left: 3vmin;
 }
 
 .dial {
