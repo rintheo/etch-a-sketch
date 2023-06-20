@@ -1,9 +1,8 @@
 let dim = 16;
+const dimChange = document.querySelector('#dimChange');
+const screen = document.querySelector('#screenContainer')
 
 function createGrid(dim) {
-    console.log('Ran createGrid()'); // For debugging
-
-    const screen = document.querySelector('#screenContainer')
     const pixelTotal = dim * dim;
     const pixelDimPercentage = 100 / dim;
 
@@ -13,14 +12,18 @@ function createGrid(dim) {
         pixel.style.height = `${pixelDimPercentage}%`
         pixel.style.width = `${pixelDimPercentage}%`
         screen.appendChild(pixel);
-        
-        console.log('Ran loop'); // For debugging
     }   
+    setupGridEtch();
 }
 
-function setupGrid() {
+function clearGrid(parent) {
+    while(parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function setupGridEtch() {
     const pixels = document.querySelectorAll('.pixel');
-    
     pixels.forEach(pixelListener);
 }
 
@@ -32,5 +35,25 @@ function etch(e) {
     this.classList.add('etched');
 }
 
+function changeDimension(e){
+    while(true){
+        let newDim = prompt("Input new dimension for each side (1-100):");
+        if (newDim !== null) {
+            newDim = parseInt(newDim);
+            if (!isNaN(newDim) &
+            newDim >= 1 &
+            newDim <= 100) {
+                dim = newDim;
+                clearGrid(screen);
+                createGrid(dim);
+                break;
+            }
+            else alert('Invalid input!');
+        }
+        else break;
+    }
+}
+
+dimChange.addEventListener('click', changeDimension);
 createGrid(dim);
-setupGrid();
+
