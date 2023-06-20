@@ -1,5 +1,6 @@
-const screen = document.querySelector('#screenContainer')
+const screen = document.querySelector('#screenContainer');
 const dimChangeButton = document.querySelector('#dimChangeButton');
+const clearGridButton = document.querySelector('#clearGridButton');
 const defaultButton = document.querySelector('#defaultButton');
 const rgbButton = document.querySelector('#rgbButton');
 const progressiveButton = document.querySelector('#progressiveButton');
@@ -46,6 +47,9 @@ function etch(e) {
             this.style.filter = `brightness(${currentBrightness - 10}%)`; 
         }
     }
+    else {
+        this.style.filter = ''; 
+    }
     switch(mode) {
         case 'default':
             this.style.backgroundColor = `#646464`;
@@ -83,8 +87,6 @@ function changeMode(e) {
     const previous = document.querySelector(`#${mode}Button`);
     previous.addEventListener('click', changeMode);
     previous.classList.remove('toggled');
-    clearGrid(screen);
-    createGrid(dim);
     mode = this.getAttribute('data-mode');
     this.classList.add('toggled');
     this.removeEventListener('click', changeMode)
@@ -104,4 +106,8 @@ function toggleProgressive() {
 dimChangeButton.addEventListener('click', changeDimension);
 rgbButton.addEventListener('click', changeMode);
 progressiveButton.addEventListener('click', toggleProgressive);
+clearGridButton.addEventListener('click', (e) => {
+    clearGrid(screen);
+    createGrid(dim);
+});
 createGrid(dim);

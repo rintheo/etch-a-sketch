@@ -48,18 +48,22 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
 }
 
+.frame-top-right {
+  justify-content: flex-end;
+}
+
 .button {
   background: #e10d10;
   color: #d6d5df;
   border: #f1374c outset 0.5vmin;
   border-radius: 2vmin;
   height: 6vmin;
-
   font-size: 2vmin;
   font-weight: 600;
 }
 
-.button#dimChangeButton {
+.button#dimChangeButton,
+.button#clearGridButton {
   margin: 2vmin;
   width: 6vmin;
 }
@@ -74,6 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button.toggled {
+  background: #ee1f23;
   border: #f1374c inset 0.5vmin;
 }
 
