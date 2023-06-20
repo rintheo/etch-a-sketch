@@ -79,8 +79,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .grid {
   border: white solid 1px;
-  height: 33%;
-  width: 33%;
+  /* 
+  height: applied through JavaScript
+  width: applied through JavaScript
+  */
 }
 
 .frame-bottom {
