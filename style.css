@@ -77,12 +77,16 @@ h1, h2, h3, h4, h5, h6 {
   align-content: center;
 }
 
-.grid {
-  border: white solid 1px;
+.pixel {
+  border: #6e747e solid 1px;
   /* 
   height: applied through JavaScript
   width: applied through JavaScript
   */
+}
+
+.etched {
+  background: #646464;
 }
 
 .frame-bottom {

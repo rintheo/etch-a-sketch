@@ -4,12 +4,12 @@ function createGrid(dim) {
     console.log('Ran createGrid()'); // For debugging
 
     const screen = document.querySelector('#screenContainer')
-    const pixels = dim * dim;
+    const pixelTotal = dim * dim;
     const pixelDimPercentage = 100 / dim;
 
-    for (i = 0; i < pixels; i++){
+    for (i = 0; i < pixelTotal; i++){
         const pixel = document.createElement('div');
-        pixel.classList.add('grid');
+        pixel.classList.add('pixel');
         pixel.style.height = `${pixelDimPercentage}%`
         pixel.style.width = `${pixelDimPercentage}%`
         screen.appendChild(pixel);
@@ -18,4 +18,19 @@ function createGrid(dim) {
     }   
 }
 
-createGrid(dim)
+function setupGrid() {
+    const pixels = document.querySelectorAll('.pixel');
+    
+    pixels.forEach(pixelListener);
+}
+
+function pixelListener(pixel) {
+    pixel.addEventListener('mouseenter', etch);
+}
+
+function etch(e) {
+    this.classList.add('etched');
+}
+
+createGrid(dim);
+setupGrid();
